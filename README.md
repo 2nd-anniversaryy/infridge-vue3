@@ -1,1 +1,1 @@
-# infridge-vue3
+# 냉장고쏙
