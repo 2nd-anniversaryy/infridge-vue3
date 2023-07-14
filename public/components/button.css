@@ -25,6 +25,10 @@
   background-color: var(--color-primary);
 }
 
+.btn-action:hover {
+  background-color: var(--color-primary-sub);
+}
+
 .btn-warning {
   color: var(--color-text-invert);
   background-color: var(--color-warning);
@@ -67,22 +71,22 @@
 
 /* button-size */
 
-.btn-size-1 {
+.btn-size-xs {
   padding: 0 var(--btn-p-v-1);
   height: var(--btn-height-1);
 }
 
-.btn-size-2 {
+.btn-size-sm {
   padding: 0 var(--btn-p-v-2);
   height: var(--btn-height-2);
 }
 
-.btn-size-3 {
+.btn-size-md {
   padding: 0 var(--btn-p-v-3);
   height: var(--btn-height-3);
 }
 
-.btn-size-4 {
+.btn-size-lg {
   padding: 0 var(--btn-p-v-4);
   height: var(--btn-height-4);
 }
