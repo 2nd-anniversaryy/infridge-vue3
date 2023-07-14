@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import UserHeader from "./inc/header/UserHeader.vue";
+import Header from "./inc/header/Header.vue";
 </script>
 
 <template>
   <!-- 헤더 -->
-  <UserHeader />
+  <Header />
 
   <!-- 메인 -->
   <main class="grow">

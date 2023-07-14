@@ -6,7 +6,9 @@
       class="w-full h-full max-w-7xl mx-auto flex items-center justify-between p-6"
     >
       <h1 class="font-medium text-xl text-primary-300">냉장고쏙</h1>
-      <a class="btn btn-action btn-size-md btn-rounded-low">로그인</a>
+      <div>
+        <a class="btn btn-action btn-size-md btn-rounded-low">로그인</a>
+      </div>
     </div>
   </header>
 </template>
