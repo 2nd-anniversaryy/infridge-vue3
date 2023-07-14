@@ -1,23 +1,17 @@
+@import url("https://webfontworld.github.io/TheJamsil/TheJamsil.css");
+
+@import url("/public/components/button.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "TheJamsil5Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2")
-    format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@import url("/public/components/button.css");
-
 @layer base {
   html {
-    font-family: TheJamsil5Bold, -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-      "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol", sans-serif;
+    font-family: TheJamsil, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+      "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+      "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      sans-serif;
   }
   body {
     @apply text-gray-800;
@@ -55,25 +49,6 @@
   /* 토글 */
   --toggle-shadow-offset: 10px;
   --toggle-wider: 2.4em;
-
-  /* sm */
-  --button-width: 40px;
-  --button-height: 22px;
-  --button-radius: 24px;
-  --toggle-diameter: 16px;
-  --button-toggle-offset: calc(
-    (var(--button-height) - var(--toggle-diameter)) / 2
-  );
-
-  /* md */
-  --button-width-md: 46px;
-  --button-height-md: 28px;
-  --button-radius-md: 30px;
-  --toggle-diameter-md: 22px;
-  --button-toggle-offset-md: calc(
-    (var(--button-height-md) - var(--toggle-diameter-md)) / 2
-  );
-  --toggle-wider-md: 2.9em;
 
   /* color */
 
@@ -162,7 +137,8 @@
 
   --color-text-invert: var(--white);
 
-  --color-primary: var(--lime-500);
+  --color-primary: #005f4b;
+  --color-primary-sub: #00a189;
   --color-disabled: var(--neutral-400);
   --color-warning: var(--red-500);
   --color-active: var(--neutral-100);
