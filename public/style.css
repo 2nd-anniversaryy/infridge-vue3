@@ -40,19 +40,7 @@
 }
 
 :root {
-  /* 아이콘 고정 크키 */
-  --icon-width: 24px;
-  --icon-height: 24px;
-  --icon-width-pc: 44px;
-  --icon-height-pc: 44px;
-
-  /* 토글 */
-  --toggle-shadow-offset: 10px;
-  --toggle-wider: 2.4em;
-
-  /* color */
-
-  --white: #ffffff;
+  /* ============== 팔레트 ================ */
 
   /* gray */
   --gray-50: #f9fafb;
@@ -135,13 +123,41 @@
   --opacity-95: 0.95;
   --opacity-100: 1;
 
-  --color-text-invert: var(--white);
+  /* ============== 사용할 컬러 ============== */
 
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-text-invert: var(--color-white);
+
+  /* 주요색상 */
   --color-primary: #005f4b;
   --color-primary-sub: #00a189;
-  --color-disabled: var(--neutral-400);
+  --color-accent: #ff6f00;
+  --color-accent-sub: #8d0000;
+
+  /* 경고 색상 */
   --color-warning: var(--red-500);
-  --color-active: var(--neutral-100);
+  --color-warning-sub: var(--red-400);
+
+  /* 텍스트 색상 */
+  --color-text-high: var(--gray-800);
+  --color-text-medium: var(--gray-600);
+  --color-text-low: var(--gray-400);
+
+  /* 테두리 색상 */
+  --color-border-high: var(--neutral-400);
+  --color-border-medium: var(--neutral-300);
+  --color-border-low: var(--neutral-200);
+  --color-border-lowest: var(--neutral-100);
+
+  /* 배경 색상 */
+  --color-bg-high: var(--neutral-300);
+  --color-bg-medium: var(--neutral-200);
+  --color-bg-low: var(--neutral-100);
+
+  --color-disabled: var(--neutral-400);
+
+  /* ============== 사용할 사이즈 ================ */
 
   /*버튼 고정 높이*/
   --btn-height-4: 48px;
@@ -159,4 +175,14 @@
   --border-radius-high: 16px;
   --border-radius-md: 8px;
   --border-radius-low: 4px;
+
+  /* 아이콘 고정 크키 */
+  --icon-width: 24px;
+  --icon-height: 24px;
+  --icon-width-pc: 44px;
+  --icon-height-pc: 44px;
+
+  /* 토글 */
+  --toggle-shadow-offset: 10px;
+  --toggle-wider: 2.4em;
 }
