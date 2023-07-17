@@ -3,6 +3,10 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
+    // https://www.typescriptlang.org/tsconfig
+    "checkJs": true, // 일반 js 파일에서도 에러체크 여부
+    "allowJs": true, // js 파일들 ts에서 import해서 쓸 수 있는지
+    "removeComments": true, //컴파일시 주석제거
     "composite": true,
     "baseUrl": ".",
     "paths": {
