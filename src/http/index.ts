@@ -26,18 +26,9 @@ class Http {
     if (!import.meta.env.DEV) return;
 
     log("🚀 request");
-    const { method, url, params, data } = request;
 
-    let queryOrParams = "";
-    if (params) {
-      queryOrParams = Object.keys(params)
-        .filter((k) => params[k] != null)
-        .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(params[k]))
-        .join("&");
-      queryOrParams = `${queryOrParams}?queryOrParams`;
-    }
-
-    const requestUrl = `[${method?.toUpperCase()}] ${url}${queryOrParams}`;
+    const { method, url, data } = request;
+    const requestUrl = `[${method?.toUpperCase()}] ${url}`;
     log(requestUrl);
 
     if (data) {
