@@ -79,3 +79,9 @@ mask-image: url("");
   -moz-mask-image: url("/src/assets/icon/sign-out.svg");
   mask-image: url("/src/assets/icon/sign-out.svg");
 }
+
+.icon-close::before {
+  -webkit-mask-image: url("/src/assets/icon/close.svg");
+  -moz-mask-image: url("/src/assets/icon/close.svg");
+  mask-image: url("/src/assets/icon/close.svg");
+}

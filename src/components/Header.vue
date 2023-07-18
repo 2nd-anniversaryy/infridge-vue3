@@ -13,7 +13,10 @@ function toggleActionMenuHandler() {
     <div
       class="w-full h-full max-w-7xl mx-auto flex items-center justify-between p-6"
     >
-      <h1 class="font-medium text-xl text-primary-300">냉장고쏙</h1>
+      <!-- TODO: 로고 들어가야함 -->
+      <div class="cursor-pointer">
+        <h1 class="font-medium text-xl text-primary-300">냉장고쏙</h1>
+      </div>
       <!-- TODO: 회원 비회원에 따라 헤더 아이템 바뀌어야함 -->
       <div v-if="0">
         <a class="btn btn-action btn-size-md btn-rounded-low">로그인</a>
@@ -31,7 +34,7 @@ function toggleActionMenuHandler() {
         <div
           @mouseleave="toggleActionMenuHandler"
           v-show="isActionMenuVisible"
-          class="absolute right-0 pt-12"
+          class="absolute right-0 top-5 pt-7"
         >
           <div
             class="w-[297px] rounded-3xl px-6 p-2.5 shadow-sm border border-solid border-neutral-200 bg-white flex flex-col"
