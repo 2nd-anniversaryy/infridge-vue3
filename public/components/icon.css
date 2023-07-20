@@ -85,3 +85,15 @@ mask-image: url("");
   -moz-mask-image: url("/src/assets/icon/close.svg");
   mask-image: url("/src/assets/icon/close.svg");
 }
+
+.icon-menu::before {
+  -webkit-mask-image: url("/src/assets/icon/menu.svg");
+  -moz-mask-image: url("/src/assets/icon/menu.svg");
+  mask-image: url("/src/assets/icon/menu.svg");
+}
+
+.icon-arrow-left::before {
+  -webkit-mask-image: url("/src/assets/icon/arrow-left.svg");
+  -moz-mask-image: url("/src/assets/icon/arrow-left.svg");
+  mask-image: url("/src/assets/icon/arrow-left.svg");
+}
