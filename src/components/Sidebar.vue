@@ -23,36 +23,34 @@
       </div>
     </div>
 
-    <div class="bg-white shadow-sm">
-      <div
-        class="py-4 px-6 border-b border-solid border-neutral-200 text-lg cursor-pointer"
+    <ul class="bg-white shadow-sm">
+      <li
+        class="py-4 px-6 border-b border-solid border-neutral-200 cursor-pointer"
       >
         마이페이지
-      </div>
-      <div
-        class="py-4 px-6 border-b border-solid border-neutral-200 text-lg cursor-pointer"
+      </li>
+      <li
+        class="py-4 px-6 border-b border-solid border-neutral-200 cursor-pointer"
       >
         설정
-      </div>
-    </div>
+      </li>
+    </ul>
 
-    <div class="bg-white shadow-sm">
-      <div
-        class="py-4 px-6 border-b border-solid border-neutral-200 text-lg cursor-pointer"
+    <ul class="bg-white shadow-sm">
+      <li
+        class="py-4 px-6 border-b border-solid border-neutral-200 cursor-pointer"
       >
         공지사항
-      </div>
-      <div
-        class="py-4 px-6 border-b border-solid border-neutral-200 text-lg cursor-pointer"
+      </li>
+      <li
+        class="py-4 px-6 border-b border-solid border-neutral-200 cursor-pointer"
       >
         문의하기
-      </div>
-    </div>
+      </li>
+    </ul>
 
     <div class="bg-white shadow-sm">
-      <div
-        class="py-4 px-6 border-b border-solid border-neutral-200 text-lg flex"
-      >
+      <div class="py-4 px-6 border-b border-solid border-neutral-200 flex">
         <a
           class="deco icon-sign-out before:w-6 before:h-6 before:bg-gray-800 flex flex-row-reverse gap-1 cursor-pointer"
           >로그아웃</a
