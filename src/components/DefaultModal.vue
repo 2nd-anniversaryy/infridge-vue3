@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="modal-background">
+  <div class="modal-background z-30">
     <section
       class="slide-top rounded shadow-md bg-white border border-solid border-neutral-100 p-6 w-[380px] max-md:w-[320px] flex flex-col gap-2.5"
     >
