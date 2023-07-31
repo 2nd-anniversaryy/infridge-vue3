@@ -1,6 +1,7 @@
 @import url("https://webfontworld.github.io/TheJamsil/TheJamsil.css");
 
 @import url("/public/components/button.css");
+@import url("/public/components/icon.css");
 
 @tailwind base;
 @tailwind components;

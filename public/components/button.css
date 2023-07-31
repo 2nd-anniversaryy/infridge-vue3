@@ -25,10 +25,6 @@
   background-color: var(--color-primary);
 }
 
-.btn-action:hover {
-  background-color: var(--color-primary-sub);
-}
-
 .btn-warning {
   color: var(--color-text-invert);
   background-color: var(--color-warning);
@@ -36,7 +32,7 @@
 
 .btn-lined {
   color: var(--neutral-800);
-  border: 1px solid var(--neutral-400);
+  border: 1px solid var(--neutral-200);
 }
 
 .btn-lined-blue {
@@ -63,11 +59,6 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
-
-/* .btn-lined.btn-action:hover {
-    background-color: var(--color-primary);
-    color: var(--color-text-invert);
-  } */
 
 /* button-size */
 

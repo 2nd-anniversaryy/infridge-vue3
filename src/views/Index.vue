@@ -3,9 +3,6 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-  <!-- 헤더 -->
-  <Header />
-
   <!-- 메인 -->
   <main class="grow">
     <!-- top -->
