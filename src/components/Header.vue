@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+import { useMemberStore, useTokenStore } from "@/stores";
+import { log } from "@/utils";
+
+// setup
+const route = useRoute();
+const router = useRouter();
+const { getMember, isAuthentication, resetMember } = useMemberStore();
+const { deleteAccessToken, getAccessToken, setAccessToken } = useTokenStore();
 
 import ProfileActionMenu from "./ProfileActionMenu.vue";
 import Sidebar from "./Sidebar.vue";
 
 const isActionMenuVisible = ref(false);
 const isSidebarVisible = ref(false);
+
+// method
 
 function toggleActionMenuHandler() {
   isActionMenuVisible.value = !isActionMenuVisible.value;
@@ -14,6 +27,33 @@ function toggleActionMenuHandler() {
 function toggleSidebarHandler() {
   isSidebarVisible.value = !isSidebarVisible.value;
 }
+
+const signInHandler = () => {
+  window.location.href = `http://localhost:9000/api/v1/oauth2/authorization/google?redirect_uri=${
+    import.meta.env.VITE_GOOGLE_REDIRECT_URI
+  }`;
+};
+
+const signOutHandler = async () => {
+  await deleteAccessToken();
+  resetMember();
+};
+
+const setTokenAndFetchMember = async (accessToken: any) => {
+  if (!accessToken) return;
+  setAccessToken(accessToken);
+  await getMember();
+  router.replace("/");
+};
+
+onMounted(async () => {
+  let accessToken = route.query.accessToken;
+  if (!accessToken) {
+    const result = await getAccessToken();
+    accessToken = typeof result === "string" ? result : "";
+  }
+  setTokenAndFetchMember(accessToken);
+});
 </script>
 
 <template>
@@ -26,10 +66,7 @@ function toggleSidebarHandler() {
         <h1 class="font-medium text-xl text-primary-300">냉장고쏙</h1>
       </div>
       <!-- TODO: 회원 비회원에 따라 헤더 아이템 바뀌어야함 -->
-      <div v-if="0">
-        <a class="btn btn-action btn-size-md btn-rounded-low">로그인</a>
-      </div>
-      <div class="relative">
+      <div class="relative" v-if="isAuthentication()">
         <!-- 헤더 아이콘들 -->
         <div class="flex gap-2.5 cursor-pointer">
           <a
@@ -51,9 +88,17 @@ function toggleSidebarHandler() {
           <ProfileActionMenu
             v-show="isActionMenuVisible"
             @hover-menu="toggleActionMenuHandler"
+            @sign-out="signOutHandler"
           />
         </Transition>
       </div>
+      <a
+        class="btn btn-action btn-size-md btn-rounded-low"
+        v-else
+        @click="signInHandler"
+      >
+        로그인
+      </a>
     </div>
   </header>
   <!-- 사이드바 -->
