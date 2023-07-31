@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emits = defineEmits(["signOut"]);
+
+const signOut = () => {
+  emits("signOut");
+};
+</script>
 
 <template>
   <div
@@ -27,6 +33,7 @@
       <div class="border-t border-solid border-neutral-300 flex py-4">
         <a
           class="deco icon-sign-out before:w-6 before:h-6 before:bg-gray-800 flex flex-row-reverse font-light gap-1 cursor-pointer"
+          @click="signOut"
           >로그아웃</a
         >
       </div>
