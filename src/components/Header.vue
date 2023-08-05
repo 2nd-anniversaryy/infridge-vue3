@@ -57,7 +57,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <header class="h-16 sticky left-0 top-0 bg-white z-10">
+  <header
+    class="h-16 sticky left-0 top-0 bg-white z-10 border-b border-solid border-neutral-200"
+  >
     <div
       class="w-full h-full max-w-7xl mx-auto flex items-center justify-between p-6"
     >

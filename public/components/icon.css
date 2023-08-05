@@ -97,3 +97,15 @@ mask-image: url("");
   -moz-mask-image: url("/src/assets/icon/arrow-left.svg");
   mask-image: url("/src/assets/icon/arrow-left.svg");
 }
+
+.icon-add-round-fill::before {
+  -webkit-mask-image: url("/src/assets/icon/add-round-fill.svg");
+  -moz-mask-image: url("/src/assets/icon/add-round-fill.svg");
+  mask-image: url("/src/assets/icon/add-round-fill.svg");
+}
+
+.icon-remove-round-fill::before {
+  -webkit-mask-image: url("/src/assets/icon/remove-round-fill.svg");
+  -moz-mask-image: url("/src/assets/icon/remove-round-fill.svg");
+  mask-image: url("/src/assets/icon/remove-round-fill.svg");
+}
