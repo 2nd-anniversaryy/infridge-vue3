@@ -1,25 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
 
 import { useMemberStore, useTokenStore } from "@/stores";
 import { log } from "@/utils";
 
-// setup
-const route = useRoute();
-const router = useRouter();
-const { getMember, isAuthentication, resetMember } = useMemberStore();
-const { deleteAccessToken, getAccessToken, setAccessToken } = useTokenStore();
-
 import ProfileActionMenu from "./ProfileActionMenu.vue";
 import Sidebar from "./Sidebar.vue";
+
+// setup
+const { isAuthentication, resetMember } = useMemberStore();
+const { deleteAccessToken } = useTokenStore();
 
 const isActionMenuVisible = ref(false);
 const isSidebarVisible = ref(false);
 
 // method
-
 function toggleActionMenuHandler() {
   isActionMenuVisible.value = !isActionMenuVisible.value;
 }
@@ -38,22 +33,6 @@ const signOutHandler = async () => {
   await deleteAccessToken();
   resetMember();
 };
-
-const setTokenAndFetchMember = async (accessToken: any) => {
-  if (!accessToken) return;
-  setAccessToken(accessToken);
-  await getMember();
-  router.replace("/");
-};
-
-onMounted(async () => {
-  let accessToken = route.query.accessToken;
-  if (!accessToken) {
-    const result = await getAccessToken();
-    accessToken = typeof result === "string" ? result : "";
-  }
-  setTokenAndFetchMember(accessToken);
-});
 </script>
 
 <template>
