@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import Header from "../components/Header.vue";
+import { onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+// setup
+const route = useRoute();
+const router = useRouter();
+
+onMounted(async () => {
+  let accessToken = route.query.accessToken;
+  if (accessToken) router.replace("/");
+});
 </script>
 
 <template>

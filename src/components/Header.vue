@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { useMemberStore, useTokenStore } from "@/stores";
+import { useMemberStore } from "@/stores";
 import { log } from "@/utils";
 
 import ProfileActionMenu from "./ProfileActionMenu.vue";
 import Sidebar from "./Sidebar.vue";
 
 // setup
-const { isAuthentication, resetMember } = useMemberStore();
-const { deleteAccessToken } = useTokenStore();
+const { isAuthentication } = useMemberStore();
 
 const isActionMenuVisible = ref(false);
 const isSidebarVisible = ref(false);
@@ -27,11 +26,6 @@ const signInHandler = () => {
   window.location.href = `http://localhost:9000/api/v1/oauth2/authorization/google?redirect_uri=${
     import.meta.env.VITE_GOOGLE_REDIRECT_URI
   }`;
-};
-
-const signOutHandler = async () => {
-  await deleteAccessToken();
-  resetMember();
 };
 </script>
 
@@ -67,7 +61,6 @@ const signOutHandler = async () => {
           <ProfileActionMenu
             v-show="isActionMenuVisible"
             @hover-menu="toggleActionMenuHandler"
-            @sign-out="signOutHandler"
           />
         </Transition>
       </div>

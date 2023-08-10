@@ -7,12 +7,14 @@ import { log } from "@/utils";
 
 export const useTokenStore = defineStore("token", () => {
   const getAccessToken = async () => {
-    const accessToken = await tokenApi.getAccessToken();
-    if (accessToken) {
-      http.setAuthorizationToken(accessToken);
-      return true;
-    }
-    return false;
+    try {
+      const accessToken = await tokenApi.getAccessToken();
+      if (accessToken) {
+        http.setAuthorizationToken(accessToken);
+        return true;
+      }
+      return false;
+    } catch (error) {}
   };
 
   const deleteAccessToken = async () => {

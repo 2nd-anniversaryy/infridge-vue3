@@ -1,4 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useTokenStore, useMemberStore } from "@/stores";
+
+const { resetMember } = useMemberStore();
+const { deleteAccessToken } = useTokenStore();
+
+const signOutHandler = async () => {
+  await deleteAccessToken();
+  resetMember();
+};
+</script>
 
 <template>
   <!-- TODO: 반복되는 스타일이 많음 나중에 집중화! -->
@@ -53,6 +63,7 @@
       <div class="py-4 px-6 border-b border-solid border-neutral-200 flex">
         <a
           class="deco icon-sign-out before:w-6 before:h-6 before:bg-gray-800 flex flex-row-reverse gap-1 cursor-pointer"
+          @click="signOutHandler"
           >로그아웃</a
         >
       </div>
