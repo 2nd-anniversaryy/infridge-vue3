@@ -20,6 +20,7 @@ export const useTokenStore = defineStore("token", () => {
   const deleteAccessToken = async () => {
     try {
       await tokenApi.delete();
+      http.removeAuthorizationToken();
     } catch (e) {
       const axiosError = e as AxiosError;
       console.log(axiosError.response?.data);

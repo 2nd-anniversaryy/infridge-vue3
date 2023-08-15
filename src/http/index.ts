@@ -71,8 +71,10 @@ class Http {
         return response;
       },
       (error: AxiosError) => {
-        // TODO : 에러 코드에 따른 분기처리
-        log(error);
+        const { config, response } = error;
+        // TODO : 401에러이면서 ServiceExcpetion Code일 시 AccessCode 재요청
+        // if (response?.status && response?.data?.)
+
         return Promise.reject(error);
       }
     );
