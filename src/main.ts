@@ -8,5 +8,4 @@ const app = createApp(App);
 
 setupStore(app);
 app.use(router);
-
 app.mount("#app");

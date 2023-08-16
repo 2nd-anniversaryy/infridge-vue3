@@ -8,21 +8,19 @@ import { log } from "@/utils";
 export const useTokenStore = defineStore("token", () => {
   const getAccessToken = async () => {
     try {
-      return await tokenApi.getAccessToken();
-    } catch (e) {
-      // TODO : 만료 토큰 시 로그인 페이지 이동
-      const axiosError = e as AxiosError;
-      log(axiosError.response?.data);
-    }
-  };
-
-  const setAccessToken = (accessToken: any) => {
-    http.setAuthorizationToken(accessToken);
+      const accessToken = await tokenApi.getAccessToken();
+      if (accessToken) {
+        http.setAuthorizationToken(accessToken);
+        return true;
+      }
+      return false;
+    } catch (error) {}
   };
 
   const deleteAccessToken = async () => {
     try {
       await tokenApi.delete();
+      http.removeAuthorizationToken();
     } catch (e) {
       const axiosError = e as AxiosError;
       console.log(axiosError.response?.data);
@@ -31,6 +29,5 @@ export const useTokenStore = defineStore("token", () => {
   return {
     deleteAccessToken,
     getAccessToken,
-    setAccessToken,
   };
 });

@@ -49,7 +49,6 @@ class Http {
       log(data);
     }
   }
-  // TODO : 인증관련 기능 구현
 
   // AxiosRequestConfig 타입만 들어올 수 있도록 타입 명시
   constructor(config: AxiosRequestConfig) {
@@ -69,10 +68,13 @@ class Http {
       (response: AxiosResponse) => {
         // 응답 로그 출력
         this.#responseLog(response);
-        // log(response);
         return response;
       },
       (error: AxiosError) => {
+        const { config, response } = error;
+        // TODO : 401에러이면서 ServiceExcpetion Code일 시 AccessCode 재요청
+        // if (response?.status && response?.data?.)
+
         return Promise.reject(error);
       }
     );
