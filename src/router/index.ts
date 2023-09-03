@@ -8,6 +8,7 @@ const router = createRouter({
     {
       path: '/',
       component: Layout,
+      // TODO: 리다이렉트 수정
       redirect: 'index',
       children: [
         {path:'index', component: Index},
