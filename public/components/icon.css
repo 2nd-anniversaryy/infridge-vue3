@@ -109,3 +109,9 @@ mask-image: url("");
   -moz-mask-image: url("/src/assets/icon/remove-round-fill.svg");
   mask-image: url("/src/assets/icon/remove-round-fill.svg");
 }
+
+.icon-google-logo::before {
+  -webkit-mask-image: url("/src/assets/icon/google-logo.svg");
+  -moz-mask-image: url("/src/assets/icon/google-logo.svg");
+  mask-image: url("/src/assets/icon/google-logo.svg");
+}

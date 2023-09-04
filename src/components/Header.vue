@@ -6,6 +6,7 @@ import { log } from "@/utils";
 
 import ProfileActionMenu from "./ProfileActionMenu.vue";
 import Sidebar from "./Sidebar.vue";
+import DefaultModal from "./DefaultModal.vue";
 
 // setup
 const { isAuthentication } = useMemberStore();
@@ -66,17 +67,32 @@ const signInHandler = () => {
           />
         </Transition>
       </div>
-      <a
-        class="btn btn-action btn-size-md btn-rounded-low"
-        v-else
-        @click="signInHandler"
-      >
-        로그인
-      </a>
+      <div v-else @click="signInHandler">
+        <a class="btn btn-action btn-size-md btn-rounded-low cursor-pointer">
+          로그인
+        </a>
+      </div>
     </div>
   </header>
+
   <!-- 사이드바 -->
   <Sidebar v-if="isSidebarVisible" @close-sidebar="toggleSidebarHandler" />
+
+  <!-- 구글 로그인 모달 -->
+  <!-- <DefaultModal>
+    <template #body>
+      <div class="flex justify-center items-center">
+        <div
+          class="flex gap-3 border border-solid border-neutral-300 py-2.5 px-6 cursor-pointer"
+        >
+          <div class="w-6 h-6">
+            <img src="../assets/icon/google-logo.svg" />
+          </div>
+          <div>구글 계정으로 로그인하기</div>
+        </div>
+      </div>
+    </template>
+  </DefaultModal> -->
 </template>
 
 <style scoped>
