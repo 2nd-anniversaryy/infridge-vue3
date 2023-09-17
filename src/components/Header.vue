@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import { useRouter } from "vue-router";
+import { useTokenStore } from "@/stores";
 import { useMemberStore } from "@/stores";
 import { log } from "@/utils";
 
@@ -8,7 +10,9 @@ import ProfileActionMenu from "./ProfileActionMenu.vue";
 import Sidebar from "./Sidebar.vue";
 
 // setup
-const { isAuthentication } = useMemberStore();
+const router = useRouter();
+const { isAuthentication, resetMember } = useMemberStore();
+const { deleteRefreshToken } = useTokenStore();
 
 const isActionMenuVisible = ref(false);
 const isSidebarVisible = ref(false);
@@ -26,6 +30,12 @@ const signInHandler = () => {
   window.location.href = `http://localhost:9000/api/v1/oauth2/authorization/google?redirect_uri=${
     import.meta.env.VITE_GOOGLE_REDIRECT_URI
   }`;
+};
+
+const singOutHandler = () => {
+  deleteRefreshToken();
+  resetMember();
+  router.push("/");
 };
 </script>
 
@@ -63,16 +73,18 @@ const signInHandler = () => {
           <ProfileActionMenu
             v-show="isActionMenuVisible"
             @hover-menu="toggleActionMenuHandler"
+            @sign-out="singOutHandler"
           />
         </Transition>
       </div>
-      <a
-        class="btn btn-action btn-size-md btn-rounded-low"
-        v-else
-        @click="signInHandler"
-      >
-        로그인
-      </a>
+      <div v-if="!isAuthentication()">
+        <a
+          class="btn btn-action btn-size-md btn-rounded-low"
+          @click="signInHandler"
+        >
+          로그인
+        </a>
+      </div>
     </div>
   </header>
   <!-- 사이드바 -->
