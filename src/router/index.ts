@@ -8,9 +8,8 @@ const router = createRouter({
     {
       path: '/',
       component: Layout,
-      redirect: 'index',
       children: [
-        {path:'index', component: Index},
+        {path:'', component: Index},
         {path:'member/fridges/list', component: ()=>import("../views/member/fridge/list/Index.vue")},
         {path:'member/fridges/detail', component: ()=>import("../views/member/fridge/detail/Index.vue")}
       ]
