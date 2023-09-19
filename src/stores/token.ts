@@ -17,7 +17,7 @@ export const useTokenStore = defineStore("token", () => {
     } catch (error) {}
   };
 
-  const deleteAccessToken = async () => {
+  const deleteRefreshToken = async () => {
     try {
       await tokenApi.delete();
       http.removeAuthorizationToken();
@@ -26,8 +26,9 @@ export const useTokenStore = defineStore("token", () => {
       console.log(axiosError.response?.data);
     }
   };
+
   return {
-    deleteAccessToken,
+    deleteRefreshToken,
     getAccessToken,
   };
 });
