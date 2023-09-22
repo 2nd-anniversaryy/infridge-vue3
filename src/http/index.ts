@@ -8,7 +8,11 @@ import axios, {
   type InternalAxiosRequestConfig,
   type AxiosResponse,
 } from "axios";
+import router from "@/router";
+
 import { log } from "@/utils";
+import { ERROR_CODE } from "@/utils/constants/errorCode";
+import refreshToken from "@/http/api/refreshToken";
 
 const BASE_URL = "/api/v1";
 
@@ -70,10 +74,30 @@ class Http {
         this.#responseLog(response);
         return response;
       },
-      (error: AxiosError) => {
-        const { config, response } = error;
-        // TODO : 401에러이면서 ServiceExcpetion Code일 시 AccessCode 재요청
-        // if (response?.status && response?.data?.)
+      async (error) => {
+        if (typeof error.response === "undefined") return;
+
+        const originalRequest = error.config;
+        const { errorCode, message, status } = error.response?.data;
+
+        if (errorCode === ERROR_CODE.AUTH.EXPIRED_TOKEN) {
+          try {
+            // 기존 AccessToken 삭제
+            this.removeAuthorizationToken();
+
+            // 새로운 AccessToken 발급 & 저장
+            const newAccessToken = await refreshToken.getAccessToken();
+            this.setAuthorizationToken(newAccessToken);
+
+            // 기존 Request 재요청
+            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+            return this.#instance(originalRequest);
+          } catch (error) {
+            await refreshToken.delete();
+            // TODO : 로그인 시간이 만료되었습니다. 다시 로그인 해주세요. 안내 필요
+            router.push("/");
+          }
+        }
 
         return Promise.reject(error);
       }
@@ -81,6 +105,7 @@ class Http {
   }
 
   setAuthorizationToken(accessToken: any) {
+    log(accessToken);
     this.#instance.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
