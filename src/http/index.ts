@@ -80,23 +80,36 @@ class Http {
         const originalRequest = error.config;
         const { errorCode, message, status } = error.response?.data;
 
-        if (errorCode === ERROR_CODE.AUTH.EXPIRED_TOKEN) {
-          try {
-            // 기존 AccessToken 삭제
-            this.removeAuthorizationToken();
+        switch (errorCode) {
+          case ERROR_CODE.AUTH.EXPIRED_TOKEN:
+            {
+              try {
+                // 기존 AccessToken 삭제
+                this.removeAuthorizationToken();
 
-            // 새로운 AccessToken 발급 & 저장
-            const newAccessToken = await refreshToken.getAccessToken();
-            this.setAuthorizationToken(newAccessToken);
+                // 새로운 AccessToken 발급 & 저장
+                const newAccessToken = await refreshToken.getAccessToken();
+                this.setAuthorizationToken(newAccessToken);
 
-            // 기존 Request 재요청
-            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-            return this.#instance(originalRequest);
-          } catch (error) {
-            await refreshToken.delete();
-            // TODO : 로그인 시간이 만료되었습니다. 다시 로그인 해주세요. 안내 필요
-            router.push("/");
-          }
+                // 기존 Request 재요청
+                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                return this.#instance(originalRequest);
+              } catch (error) {
+                log(error);
+              }
+            }
+            break;
+          case ERROR_CODE.AUTH.EXPIRED_REFRESH_TOKEN:
+            {
+              try {
+                await refreshToken.delete();
+                // TODO : 로그인 시간이 만료되었습니다. 다시 로그인 해주세요. 안내 필요
+                router.push("/");
+              } catch (error) {
+                log(error);
+              }
+            }
+            break;
         }
 
         return Promise.reject(error);
