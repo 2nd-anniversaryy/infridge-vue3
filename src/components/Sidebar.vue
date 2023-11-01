@@ -2,10 +2,10 @@
 import { useTokenStore, useMemberStore } from "@/stores";
 
 const { resetMember } = useMemberStore();
-const { deleteAccessToken } = useTokenStore();
+const { deleteRefreshToken } = useTokenStore();
 
 const signOutHandler = async () => {
-  await deleteAccessToken();
+  await deleteRefreshToken();
   resetMember();
 };
 </script>
